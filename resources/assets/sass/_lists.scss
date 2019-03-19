@@ -226,23 +226,6 @@
   position: absolute;
 }
 
-.activity-list-item {
-  padding: $-s 0;
-  color: #888;
-  fill: #888;
-  border-bottom: 1px solid #EEE;
-  font-size: 0.9em;
-  .left {
-    float: left;
-  }
-  .left + .right {
-    margin-left: 30px + $-s;
-  }
-  &:last-of-type {
-    border-bottom: 0;
-  }
-}
-
 ul.pagination {
   display: inline-block;
   list-style: none;
@@ -304,7 +287,7 @@ ul.pagination {
   }
 }
 
-.card .entity-list-item, .card .activity-list-item {
+.card .entity-list-item {
   padding-left: $-m;
   padding-right: $-m;
 }

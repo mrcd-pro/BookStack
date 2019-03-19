@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use Closure;
+use FontLib\Table\Type\loca;
 use Illuminate\Http\Request;
 
 class Localization
@@ -53,11 +54,13 @@ class Localization
         $defaultLang = config('app.locale');
         config()->set('app.default_locale', $defaultLang);
 
-        if (user()->isDefault() && config('app.auto_detect_locale')) {
-            $locale = $this->autoDetectLocale($request, $defaultLang);
-        } else {
-            $locale = setting()->getUser(user(), 'language', $defaultLang);
-        }
+//        if (user()->isDefault() && config('app.auto_detect_locale')) {
+//            $locale = $this->autoDetectLocale($request, $defaultLang);
+//        } else {
+//            $locale = setting()->getUser(user(), 'language', $defaultLang);
+//        }
+        // Берем только предустановленный язык
+        $locale = setting()->getUser(user(), 'language', $defaultLang);
 
         // Set text direction
         if (in_array($locale, $this->rtlLocales)) {

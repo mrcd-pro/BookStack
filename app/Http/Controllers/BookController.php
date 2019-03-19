@@ -1,6 +1,5 @@
 <?php namespace BookStack\Http\Controllers;
 
-use Activity;
 use BookStack\Auth\UserRepo;
 use BookStack\Entities\Book;
 use BookStack\Entities\Repos\EntityRepo;
@@ -76,7 +75,6 @@ class BookController extends Controller
             'description' => 'string|max:1000'
         ]);
         $book = $this->entityRepo->createFromInput('book', $request->all());
-        Activity::add($book, 'book_create', $book->id);
         return redirect($book->getUrl());
     }
 
@@ -95,8 +93,7 @@ class BookController extends Controller
         return view('books/show', [
             'book' => $book,
             'current' => $book,
-            'bookChildren' => $bookChildren,
-            'activity' => Activity::entityActivity($book, 20, 0)
+            'bookChildren' => $bookChildren
         ]);
     }
 
@@ -128,7 +125,6 @@ class BookController extends Controller
             'description' => 'string|max:1000'
         ]);
          $book = $this->entityRepo->updateFromInput('book', $book, $request->all());
-         Activity::add($book, 'book_update', $book->id);
          return redirect($book->getUrl());
     }
 
@@ -235,10 +231,9 @@ class BookController extends Controller
             }
         });
 
-        // Rebuild permissions and add activity for involved books.
+        // Rebuild permissions for involved books.
         $booksInvolved->each(function (Book $book) {
             $this->entityRepo->buildJointPermissionsForBook($book);
-            Activity::add($book, 'book_sort', $book->id);
         });
 
         return redirect($book->getUrl());
@@ -253,7 +248,6 @@ class BookController extends Controller
     {
         $book = $this->entityRepo->getBySlug('book', $bookSlug);
         $this->checkOwnablePermission('book-delete', $book);
-        Activity::addMessage('book_delete', 0, $book->name);
         $this->entityRepo->destroyBook($book);
         return redirect('/books');
     }

@@ -49,7 +49,7 @@ return [
     'timezone' => 'UTC',
 
     // Default locale to use
-    'locale' => env('APP_LANG', 'en'),
+    'locale' => env('APP_LANG', 'ru'),
 
     // Locales available
     'locales' => ['en', 'ar', 'de', 'de_informal', 'es', 'es_AR', 'fr', 'nl', 'pt_BR', 'sk', 'sv', 'kr', 'ja', 'pl', 'it', 'ru', 'uk', 'zh_CN', 'zh_TW'],

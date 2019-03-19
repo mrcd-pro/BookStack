@@ -8,13 +8,6 @@
     </div>
 @stop
 
-@section('sidebar')
-    <div class="card" id="recent-activity">
-        <h3>@icon('time') {{ trans('entities.recent_activity') }}</h3>
-        @include('partials/activity-list', ['activity' => $activity])
-    </div>
-@stop
-
 @section('body')
 
     <div class="container small">

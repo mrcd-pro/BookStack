@@ -64,33 +64,6 @@
         </div>
     </div>
 
-    <div class="card entity-details">
-        <h3>@icon('info') {{ trans('common.details') }}</h3>
-        <div class="body blended-links text-small text-muted">
-            @include('partials.entity-meta', ['entity' => $chapter])
-
-            @if($book->restricted)
-                <div class="active-restriction">
-                    @if(userCan('restrictions-manage', $book))
-                        <a href="{{ $book->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.books_permissions_active') }}</a>
-                    @else
-                        @icon('lock'){{ trans('entities.books_permissions_active') }}
-                    @endif
-                </div>
-            @endif
-
-            @if($chapter->restricted)
-                <div class="active-restriction">
-                    @if(userCan('restrictions-manage', $chapter))
-                        <a href="{{ $chapter->getUrl('/permissions') }}">@icon('lock'){{ trans('entities.chapters_permissions_active') }}</a>
-                    @else
-                        @icon('lock'){{ trans('entities.chapters_permissions_active') }}
-                    @endif
-                </div>
-            @endif
-        </div>
-    </div>
-
     @include('partials/book-tree', ['book' => $book, 'sidebarTree' => $sidebarTree])
 @stop
 

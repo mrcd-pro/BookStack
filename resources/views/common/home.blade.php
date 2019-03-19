@@ -43,14 +43,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-4" id="recent-activity">
-                <div class="card">
-                    <h3>@icon('time') {{ trans('entities.recent_activity') }}</h3>
-                    @include('partials/activity-list', ['activity' => $activity])
-                </div>
-            </div>
-
         </div>
     </div>
 

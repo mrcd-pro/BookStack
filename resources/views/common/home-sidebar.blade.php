@@ -24,8 +24,3 @@
         ])
     </div>
 </div>
-
-<div id="recent-activity" class="card">
-    <h3>@icon('time') {{ trans('entities.recent_activity') }}</h3>
-    @include('partials/activity-list', ['activity' => $activity])
-</div>
