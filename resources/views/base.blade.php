@@ -29,7 +29,7 @@
     <header id="header">
         <div class="container fluid">
             <div class="row">
-                <div class="col-sm-4 col-md-3">
+                <div class="col-sm-6 col-md-5">
                     <a href="{{ baseUrl('/') }}" class="logo">
                         @if(setting('app-logo', '') !== 'none')
                             <img class="logo-image" src="{{ setting('app-logo', '') === '' ? baseUrl('/logo.png') : baseUrl(setting('app-logo', '')) }}" alt="Logo">
@@ -38,8 +38,13 @@
                             <span class="logo-text">{{ setting('app-name') }}</span>
                         @endif
                     </a>
+                    @if(!signedInUser())
+                        <div class="links text-center">
+                            <a href="{{ baseUrl('/login') }}">@icon('login') Войти в Систему Mertago</a>
+                        </div>
+                    @endif
                 </div>
-                <div class="col-sm-8 col-md-9">
+                <div class="col-sm-6 col-md-7">
                     <div class="float right">
                         <div class="header-search">
                             <form action="{{ baseUrl('/search') }}" method="GET" class="search-box">
