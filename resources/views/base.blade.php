@@ -39,7 +39,7 @@
                         @endif
                     </a>
                     <div class="links text-center">
-                        <a href="{{ baseUrl('/login') }}">@icon('login') Войти в Систему Mertago</a>
+                        <a href="{{ url('https://app.mrcd.pro/login') }}">@icon('login') Войти в Систему Mertago</a>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
